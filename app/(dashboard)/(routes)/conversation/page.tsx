@@ -15,6 +15,7 @@ import { useRouter } from 'next/navigation';
 import { ChatCompletionRequestMessage } from 'openai';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import toast from 'react-hot-toast';
 import ReactMarkdown from 'react-markdown'
 import { z } from 'zod';
 const ConversationPage = () => {
@@ -54,6 +55,7 @@ const ConversationPage = () => {
 			form.reset();
 		} catch (error: any) {
 			console.log(error);
+			toast.error('Something went wrong');
 		} finally {
 			router.refresh();
 		}

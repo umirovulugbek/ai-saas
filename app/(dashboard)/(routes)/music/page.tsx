@@ -11,6 +11,7 @@ import { Music } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import toast from 'react-hot-toast';
 import { z } from 'zod';
 const MusicPage = () => {
 	const router = useRouter();
@@ -41,6 +42,7 @@ const MusicPage = () => {
 			form.reset();
 		} catch (error: any) {
 			console.log(error);
+			toast.error('Something went wrong');
 		} finally {
 			router.refresh();
 		}
