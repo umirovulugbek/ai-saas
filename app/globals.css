@@ -73,7 +73,9 @@ body,
     --ring: 12 6.5% 15.1%;
   }
 }
- 
+ .cl-internal-uyu30o , .cl-internal-b3fm6y{
+  display: none
+ }
 @layer base {
   * {
     @apply border-border;

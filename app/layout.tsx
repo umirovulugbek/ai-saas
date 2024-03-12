@@ -20,7 +20,7 @@ export default function RootLayout({
 	return (
 		<ClerkProvider>
 			<html lang='en'>
-				<CrispProvider />f
+				<CrispProvider />
 				<body className={inter.className}>
 					<ToastProvider />
 
