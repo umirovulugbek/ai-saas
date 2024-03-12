@@ -15,6 +15,7 @@ import { useRouter } from 'next/navigation';
 import { ChatCompletionRequestMessage } from 'openai';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import ReactMarkdown from 'react-markdown'
 import { z } from 'zod';
 const ConversationPage = () => {
 	const router = useRouter();
@@ -102,7 +103,19 @@ const ConversationPage = () => {
 					{messages.map(item => (
 						<div className={cn('p-8 w-full flex item-start gap-x-8 rounded-lg', item?.role === 'user' ? 'bg-white border border-black/10' : 'bg-muted')} key={item?.content}>
 							{item?.role === 'user' ? <UserAvatar /> : <BotAvatar />}
-							{item?.content}
+							<ReactMarkdown
+								components={{
+									pre: ({ node, ...props }) => (
+										<div className=' overflow-auto w-full my-2 bg-black/10 p-2 rounded-lg'>
+											<pre {...props} />
+										</div>
+									),
+									code: ({ node, ...props }) => <code className={'bg-black/10 rounded-lg p-1'} {...props} />,
+								}}
+								className={' leading-7 overflow-hidden text-sm'}
+							>
+								{item?.content || ''}
+							</ReactMarkdown>
 						</div>
 					))}
 				</div>
